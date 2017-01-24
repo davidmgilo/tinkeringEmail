@@ -11,6 +11,8 @@ class WelcomeNotification extends Notification
 {
     use Queueable;
 
+    public $slack_webhook_url = 'https://hooks.slack.com/services/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';
+
     /**
      * Create a new notification instance.
      *
@@ -29,7 +31,7 @@ class WelcomeNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','slack'];
     }
 
     /**
@@ -57,5 +59,14 @@ class WelcomeNotification extends Notification
         return [
             //
         ];
+    }
+
+    public function toSlack($notifiable){
+        return (new SlackMessage())->content('Hola benvingut pepe!');
+    }
+
+    public function routeNotificationForSlack()
+    {
+        return $this->slack_webhook_url;
     }
 }
