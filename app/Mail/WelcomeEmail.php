@@ -36,4 +36,11 @@ class WelcomeEmail extends Mailable
     {
         return $this->view('emails.welcome');
     }
+
+    public function subject($subject)
+    {
+        return 'Welcome';
+    }
+
+
 }
