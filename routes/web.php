@@ -12,6 +12,7 @@
 */
 
 use App\Mail\WelcomeEmail;
+use App\Notifications\WelcomeNotification;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,4 +24,9 @@ Route::get('/sendemail', function () {
 //    });
     Mail::to('davidmgilo@gmail.com')->send(new WelcomeEmail());
     dump("Missatge enviat correctament");
+});
+
+Route::get('/sendnotification', function () {
+    $user= Auth::user();
+    $user->notify(new WelcomeNotification());
 });
