@@ -19,4 +19,5 @@ Route::get('/sendemail', function () {
     Mail::send('emails.welcome',[],function($message){
         $message->to('davidmgilo@gmail.com')->subject('Welcome');
     });
+    dump("Missatge enviat correctament");
 });
