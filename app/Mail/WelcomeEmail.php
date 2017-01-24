@@ -34,7 +34,10 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome');
+        //Auth::loginUsingId(1);
+        return $this->view('emails.welcome')->with('username',
+//            Auth::user()->name
+        'David');
     }
 
     public function subject($subject)
