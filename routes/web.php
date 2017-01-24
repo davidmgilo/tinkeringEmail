@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/sendemail', function () {
+    Mail::send('emails.welcome',[],function($message){
+        $message->to('davidmgilo@gmail.com')->subject('Welcome');
+    });
+});
