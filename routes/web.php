@@ -27,10 +27,10 @@ Route::get('/sendemail', function () {
 });
 
 Route::get('/sendnotification', function () {
-    $user = factory(App\User::class)->create();
-    Auth::login($user);
- //   Auth::loginUsingId(1);
-//    $user= Auth::user();
+//    $user = factory(App\User::class)->create();
+//    Auth::login($user);
+    Auth::loginUsingId(1);
+    $user= Auth::user();
     $user->notify(new WelcomeNotification());
     dump("Notification sent!");
 });
